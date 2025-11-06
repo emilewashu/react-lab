@@ -7,9 +7,6 @@ function Square({ value, onSquareClick }) {
   );
 }
 function Board({ xIsNext, squares, onPlay }) {
-  const [xIsNext, setXIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
-
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
@@ -90,9 +87,9 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = "Go to move #" + move;
     } else {
-      description = 'Go to game start';
+      description = "Go to game start";
     }
     return (
       <li>
@@ -103,7 +100,7 @@ export default function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board />
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
